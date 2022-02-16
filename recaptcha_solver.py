@@ -16,18 +16,18 @@ from stem import Signal
 from stem.control import Controller
 from selenium.common.exceptions import NoSuchElementException
 
-project_path = os.path.join(sys.path[0])
-
-opt = Options()
-opt.add_experimental_option("debuggerAddress", "localhost:8989")
-driver = webdriver.Chrome(
-    executable_path=project_path + "/chromedriver.exe",
-    chrome_options=opt,
-)
-wait = WebDriverWait(driver, 60)
 
 
 def solve_recaptcha():
+    project_path = os.path.join(sys.path[0])
+
+    opt = Options()
+    opt.add_experimental_option("debuggerAddress", "localhost:8989")
+    driver = webdriver.Chrome(
+        executable_path=project_path + "/chromedriver.exe",
+        chrome_options=opt,
+    )
+
     def check_exists_by_xpath(xpath):
             try:
                 driver.find_element_by_xpath(xpath)
